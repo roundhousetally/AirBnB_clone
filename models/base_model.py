@@ -1,18 +1,34 @@
 #!/usr/bin/python3
 import uuid
-import datetime
+from datetime import datetime
+import models
+import models.engine
 """The module contains the models in the hBnB clone"""
 
 
 class BaseModel():
     """This class is the bass for all hbnb objects"""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Init func"""
+        tf = "%Y-%m-%dT%H:%M:%S.%f"
+        
         self.id = str(uuid.uuid4())
-        self.created_at = (datetime.datetime.now()).isoformat()
-        self.updated_at = (datetime.datetime.now()).isoformat()
+        self.created_at = (datetime.now()).isoformat()
+        self.updated_at = (datetime.now()).isoformat()
 
+        if kwargs:
+            for k, v in kwargs.items():
+                if k == 'created_at':
+                    v = datetime.strptime(v, tf)
+                if k == 'updated_at':
+                    v = datetime.strptime(v, tf)
+                if k == '__class__':
+                    v = self.__class__
+                setattr(self, k, v)
+        else:
+            models.storage.new(self)
+        
     def __str__(self):
         """STRRRRRRRRR"""
         return "[{}] {} {}".format(self.__class__.__name__,
@@ -20,7 +36,9 @@ class BaseModel():
 
     def save(self):
         """Save me"""
-        self.updated_at = (datetime.datetime.now()).isoformat()
+        from models import storage
+        self.updated_at = (datetime.now()).isoformat()
+        storage.save()
 
     def to_dict(self):
         """returns dict obj with class name"""
