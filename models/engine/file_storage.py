@@ -16,7 +16,8 @@ class FileStorage():
 
     def new(self, obj):
         """ sets obj with key """
-        FileStorage.__objects[obj.id] = obj.__dict__
+        keyval = "{}.{}".format(obj.__class__.__name__, obj.id)
+        FileStorage.__objects[keyval] = obj.to_dict()
 
     def save(self):
         """ serializes obj """

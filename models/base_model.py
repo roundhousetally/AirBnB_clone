@@ -12,7 +12,7 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         """Init func"""
         tf = "%Y-%m-%dT%H:%M:%S.%f"
-        
+
         self.id = str(uuid.uuid4())
         self.created_at = (datetime.now()).isoformat()
         self.updated_at = (datetime.now()).isoformat()
@@ -28,11 +28,11 @@ class BaseModel():
                 setattr(self, k, v)
         else:
             models.storage.new(self)
-        
+
     def __str__(self):
         """STRRRRRRRRR"""
-        return "[{}] {} {}".format(self.__class__.__name__,
-                                   self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         """Save me"""
@@ -42,6 +42,6 @@ class BaseModel():
 
     def to_dict(self):
         """returns dict obj with class name"""
-        my_dict = self.__dict__
+        my_dict = self.__dict__.copy()
         my_dict.update(__class__=self.__class__.__name__)
         return my_dict
