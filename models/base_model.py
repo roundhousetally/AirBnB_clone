@@ -13,10 +13,6 @@ class BaseModel():
         """Init func"""
         tf = "%Y-%m-%dT%H:%M:%S.%f"
 
-        self.id = str(uuid.uuid4())
-        self.created_at = (datetime.now()).isoformat()
-        self.updated_at = (datetime.now()).isoformat()
-
         if kwargs:
             for k, v in kwargs.items():
                 if k == 'created_at':
@@ -27,6 +23,9 @@ class BaseModel():
                     v = self.__class__
                 setattr(self, k, v)
         else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.today()
+            self.updated_at = datetime.today()
             models.storage.new(self)
 
     def __str__(self):
@@ -37,11 +36,13 @@ class BaseModel():
     def save(self):
         """Save me"""
         from models import storage
-        self.updated_at = (datetime.now()).isoformat()
+        self.updated_at = datetime.today()
         storage.save()
 
     def to_dict(self):
         """returns dict obj with class name"""
         my_dict = self.__dict__.copy()
+        my_dict["created_at"] = self.created_at.isoformat()
+        my_dict["updated_at"] = self.updated_at.isoformat()
         my_dict.update(__class__=self.__class__.__name__)
         return my_dict
