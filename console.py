@@ -8,7 +8,7 @@ from models.engine.file_storage import FileStorage
 class HBNBCommand(cmd.Cmd):
     """ command interpreter for airbnb """
     prompt = '(hbnb) '
-    __classes = { "BaseModel" }
+    __classes = {"BaseModel"}
 
     def do_quit(self, arg):
         """ exit the app """
@@ -44,8 +44,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class does not exist **")
         elif len(args) == 1:
             print("** instance id is missing **")
-        elif "{}.{}".format(arg[0], arg[1]) not in FileStorage.__objects.keys():
-           print("** no instance found **")
+        elif "{}.{}".format(arg[0], arg[1])
+        not in FileStorage.__objects.keys():
+            print("** no instance found **")
         else:
             keyval = "{}.{}".format(arg[0], arg[1])
             print(FileStorage.__objects[keyval])
@@ -60,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id is missing **")
         elif "{}.{}".format(arg[0], arg[1]) not in objs.keys():
-           print("** no instance found **")
+            print("** no instance found **")
         else:
             keyval = "{}.{}".format(arg[0], arg[1])
             FileStorage.pop(keyval)
@@ -69,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        else:
+#        else:
             #print them all
 
     def do_update(self, arg):
