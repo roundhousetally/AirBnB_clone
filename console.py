@@ -33,7 +33,6 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in HBNBCommand.__classes:
             print("** class does not exist **")
         else:
-            print("Inside")
             newstance = HBNBCommand.__classes[arg]()
             newstance.save()
             print(newstance.id)
@@ -64,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class does not exist **")
         elif len(args) == 1:
             print("** instance id is missing **")
-        elif "{}.{}".format(args[0], args[1]) not in objs.keys():
+        elif "{}.{}".format(args[0], args[1]) not in all_obj.keys():
             print("** no instance found **")
         else:
             keyval = "{}.{}".format(args[0], args[1])
@@ -86,21 +85,23 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         args = arg.split()
+        all_obj = storage.all()
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         elif len(args) == 1:
             print("** instance id is missing **")
-        elif "{}.{}".format(arg[0], arg[1]) not in objs.keys():
+        elif "{}.{}".format(args[0], args[1]) not in all_obj.keys():
             print("** no instance found **")
         elif len(args) == 2:
             print("** attribute name missing **")
         elif len(args) == 3:
             print("** value missing **")
         else:
-            keyval = "{}.{}".format(arg[0], arg[1])
-            FileStorage.__objects[keyval] = args[4]
+            keyval = "{}.{}".format(args[0], args[1])
+            all_obj[keyval].str(args[2]) = args[3]
+            all_obj.save()
 
 
 if __name__ == '__main__':
