@@ -46,8 +46,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class does not exist **")
         elif len(args) == 1:
             print("** instance id is missing **")
-        elif "{}.{}".format(arg[0], arg[1])
-        not in FileStorage.__objects.keys():
+        elif "{}.{}".format(arg[0], arg[1]) not in FileStorage.__objects.keys():
             print("** no instance found **")
         else:
             keyval = "{}.{}".format(arg[0], arg[1])
