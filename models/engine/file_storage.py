@@ -32,8 +32,9 @@ class FileStorage():
         """ deserializes object """
         try:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
- #               tempdict_objs = f.read
-
+                tempdict_objs = json.load(f)
+            for key, value in tempdict_objs.items():
+                obj = eval(value['__class__'])(**value)
+                FileStorage.__objects[key] = obj
         except:
-            pass           
-  
+            pass
