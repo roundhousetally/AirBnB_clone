@@ -3,6 +3,8 @@
 import cmd
 import sys
 from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
