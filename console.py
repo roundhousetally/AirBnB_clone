@@ -10,7 +10,7 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     """ command interpreter for airbnb """
     prompt = '(hbnb) '
-    __classes = {"BaseModel"}
+    __classes = {"BaseModel": BaseModel}
 
     def do_quit(self, arg):
         """ exit the app """
@@ -30,9 +30,10 @@ class HBNBCommand(cmd.Cmd):
         """ creates a new instance of BaseModel """
         if len(arg) == 0:
             print("** class name missing **")
-        elif arg[0] not in HBNBCommand.__classes:
+        elif arg not in HBNBCommand.__classes:
             print("** class does not exist **")
         else:
+            print("Inside")
             newstance = HBNBCommand.__classes[arg]()
             newstance.save()
             print(newstance.id)
@@ -40,39 +41,48 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """ prints the string rep of an instance based upon class name """
         args = arg.split()
+        all_obj = storage.all()
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         elif len(args) == 1:
             print("** instance id is missing **")
-        elif "{}.{}".format(arg[0], arg[1]) not in FileStorage.__objects.keys():
+        elif "{}.{}".format(args[0], args[1]) not in all_obj.keys():
             print("** no instance found **")
         else:
-            keyval = "{}.{}".format(arg[0], arg[1])
-            print(FileStorage.__objects[keyval])
+            keyval = "{}.{}".format(args[0], args[1])
+            print(all_obj[keyval])
 
     def do_destroy(self, arg):
         """ deletes and instance based upon class name """
         args = arg.split()
+        all_obj = storage.all()
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         elif len(args) == 1:
             print("** instance id is missing **")
-        elif "{}.{}".format(arg[0], arg[1]) not in objs.keys():
+        elif "{}.{}".format(args[0], args[1]) not in objs.keys():
             print("** no instance found **")
         else:
-            keyval = "{}.{}".format(arg[0], arg[1])
-            FileStorage.pop(keyval)
+            keyval = "{}.{}".format(args[0], args[1])
+            all_obj.pop(keyval)
+            all_obj.save()
 
     def do_all(self, arg):
         args = arg.split()
+        all_obj = storage.all()
         if len(args) == 0:
             print("** class name missing **")
-#        else:
-            #print them all
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            ret = []
+            for i in all_obj.keys():
+                ret.append(all_obj[i].__str__())
+            print(ret)
 
     def do_update(self, arg):
         args = arg.split()
