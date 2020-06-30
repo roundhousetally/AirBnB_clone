@@ -17,7 +17,7 @@ class FileStorage():
     def new(self, obj):
         """ sets obj with key """
         keyval = "{}.{}".format(obj.__class__.__name__, obj.id)
-        FileStorage.__objects[keyval] = obj.to_dict()
+        FileStorage.__objects[keyval] = obj
 
     def save(self):
         """ serializes obj """
@@ -25,15 +25,15 @@ class FileStorage():
         newdict = {}
         for key, value in FileStorage.__objects.items():
             newdict[key] = value.to_dict()
-        with open(FileStorage.__file_path, 'w+', encoding='utf-8') as f: 
-            json.dump(nob_dict, f)
+        with open(FileStorage.__file_path, 'w+', encoding='utf-8') as f:
+            json.dump(newdict, f)
 
     def reload(self):
-        """ deserializes obj """
+        """ deserializes object """
         try:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
-                tempdict_objs = json.load(f.read())
-                for key, value in tempdict_objs.items():
-                    FileStorage.__objects = tempdict_objs               
+ #               tempdict_objs = f.read
+
         except:
-            pass
+            pass           
+  
