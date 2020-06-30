@@ -2,6 +2,7 @@
 """ Console """
 import cmd
 import sys
+from models.engine.file_storage import FileStorage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -36,27 +37,60 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """ prints the string rep of an instance based upon class name """
-        args = split(arg)
+        args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         elif len(args) == 1:
             print("** instance id is missing **")
-        elif
+        elif "{}.{}".format(arg[0], arg[1]) not in FileStorage.__objects.keys():
+           print("** no instance found **")
+        else:
+            keyval = "{}.{}".format(arg[0], arg[1])
+            print(FileStorage.__objects[keyval])
 
     def do_destroy(self, arg):
         """ deletes and instance based upon class name """
-        args = split(arg)
+        args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         elif len(args) == 1:
             print("** instance id is missing **")
-        elif
+        elif "{}.{}".format(arg[0], arg[1]) not in objs.keys():
+           print("** no instance found **")
+        else:
+            keyval = "{}.{}".format(arg[0], arg[1])
+            FileStorage.pop(keyval)
 
     def do_all(self, arg):
+        args = arg.split()
+        if len(args) == 0:
+            print("** class name missing **")
+        else:
+            #print them all
+
+    def do_update(self, arg):
+        args = arg.split()
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class does not exist **")
+        elif len(args) == 1:
+            print("** instance id is missing **")
+        elif "{}.{}".format(arg[0], arg[1]) not in objs.keys():
+            print("** no instance found **")
+        elif len(args) == 2:
+            print("** attribute name missing **")
+        elif len(args) == 3:
+            print("** value missing **")
+        else:
+            keyval = "{}.{}".format(arg[0], arg[1])
+            FileStorage.__objects[keyval] = args[4]
+
+
 if __name__ == '__main__':
     """ cannot execute if imported """
     HBNBCommand().cmdloop()
