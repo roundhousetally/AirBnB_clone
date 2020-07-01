@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" unit tests for base class """
+""" unit tests for amenity class """
 
 
 import unittest
@@ -13,9 +13,9 @@ from models.amenity import Amenity
 from models import storage
 
 
-class TestUser(unittest.TestCase):
-    """ test cases for user class """
-    def test_pep8_user_model(self):
+class TestAmenity(unittest.TestCase):
+    """ test cases for Amenity class """
+    def test_pep8_amenity(self):
         """ tests pep8 """
         pep8style = pep8.StyleGuide(quiet=True)
         errs = pep8style.check_files(['models/amenity.py'])
@@ -27,7 +27,7 @@ class TestUser(unittest.TestCase):
         self.newtest = Amenity()
 
     def test_instance(self):
-        """ checks if it is an instance of BaseModel"""
+        """ checks if it is an instance of amenity"""
         self.assertIsInstance(self.newtest, Amenity)
 
     def test_no_arg(self):
