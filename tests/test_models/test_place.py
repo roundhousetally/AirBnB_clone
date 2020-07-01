@@ -1,5 +1,5 @@
-B#!/usr/bin/python3
-""" unit tests for city class """
+#!/usr/bin/python3
+""" unit tests for place class """
 
 
 import unittest
@@ -9,30 +9,30 @@ import json
 import os
 import pep8
 import models
-from models.city import City
+from models.place import Place
 from models import storage
 
 
-class TestCity(unittest.TestCase):
-    """ test cases for user class """
+class TestPlace(unittest.TestCase):
+    """ test cases for Place class """
     def test_pep8_user_model(self):
         """ tests pep8 """
         pep8style = pep8.StyleGuide(quiet=True)
-        errs = pep8style.check_files(['models/city.py'])
+        errs = pep8style.check_files(['models/place.py'])
         self.assertEqual(errs.total_errors, 0, errs.messages)
 
     @classmethod
     def setUp(self):
-        """ setup city """
-        self.newtest = City()
+        """ setup place """
+        self.newtest = Place()
 
     def test_instance(self):
-        """ checks if it is an instance of City """
-        self.assertIsInstance(self.newtest, City)
+        """ checks if it is an instance of BaseModel"""
+        self.assertIsInstance(self.newtest, Place)
 
     def test_no_arg(self):
         """ no arg """
-        self.assertEqual(City, type(City()))
+        self.assertEqual(Place, type(Place()))
 
 
 if __name__ == "__main__":
