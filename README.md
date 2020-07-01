@@ -34,7 +34,7 @@ e.g.:
 ### destroy
 Searches the file for an instance that mataches the Model and id and deletes it.
 Usage:
-`(hbnb) destroy <model name> <id>
+`(hbnb) destroy <model name> <id>`
 
 e.g.:
 
