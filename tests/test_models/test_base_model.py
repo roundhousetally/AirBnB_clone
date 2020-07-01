@@ -11,6 +11,7 @@ import pep8
 import models
 from models.base_model import BaseModel
 from models import storage
+from models.engine.file_storage import FileStorage
 BaseModel = models.base_model.BaseModel
 
 
@@ -58,6 +59,8 @@ class TestBase(unittest.TestCase):
 
     def test_attrtypes(self):
         """ attribute types """
+        bm = BaseModel()
+        self.assertTrue(type(bm.id) is str)
 
 if __name__ == "__main__":
         unittest.main()
