@@ -13,41 +13,41 @@ A python command interpreter written as part of the year one curriculum at Holbe
 
 Once launched it will display the prompt (hbnb).  From here **AirBnB Clone Interpreter** can be used like the command line within a narrow scope. **AirBnB Clone Interpreter** accepts the following commands:
 
-###create
+### create
 Creates a new instance of a model, saves it, and prints the id
 Usage:
-`(hbnb) create <model name>
-e.g.:
-`(hbnb) create BaseModel
+`(hbnb) create <model name>`
+	e.g.:
+`(hbnb) create BaseModel`
 
-###show
+### show
 Searches the file for an instance that mataches the Model and id and displays its string represenation.
 Usage:
-`(hbnb) show <model name> <id>
+`(hbnb) show <model name> <id>`
 e.g.:
-`(hbnb) show BaseModel 1143234253465
+`(hbnb) show BaseModel 1143234253465`
 
-###destroy
+### destroy
 Searches the file for an instance that mataches the Model and id and deletes it.
 Usage:
 `(hbnb) destroy <model name> <id>
 e.g.:
 `(hbnb) destroy BaseModel 1143234253465
 
-###all
+### all
 Prints all instances in storage file
 Usage:
-`(hbnb) all
+`(hbnb) all`
 
-###update
+### update
 Searches the storage file and updates a value at a particular instance
 `update <class name> <id> <attribute name> "<attribute value>
-"
+"`
 e.g.:
-`update BaseModel 1143234253465 email "aibnb@holbertonschool.com"
+`update BaseModel 1143234253465 email "aibnb@holbertonschool.com"`
 
 To exit:
-`(hbnb) quit
+`(hbnb) quit`
 
 
 This will return the user to their home command line.
