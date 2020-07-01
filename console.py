@@ -10,7 +10,15 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     """ command interpreter for airbnb """
     prompt = '(hbnb) '
-    __classes = {"BaseModel": BaseModel}
+    __classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
+    }
 
     def do_quit(self, arg):
         """ exit the app """
@@ -68,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             keyval = "{}.{}".format(args[0], args[1])
             all_obj.pop(keyval)
-            all_obj.save()
+            storage.save()
 
     def do_all(self, arg):
         args = arg.split()
@@ -100,8 +108,8 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             keyval = "{}.{}".format(args[0], args[1])
-            all_obj[keyval].str(args[2]) = args[3]
-            all_obj.save()
+            all_obj[keyval].attr = args[3]
+            storage.save()
 
 
 if __name__ == '__main__':

@@ -3,7 +3,7 @@ from models.base_model import BaseModel
 """Amenity class"""
 
 
-classPlace(BaseModel):
+class Place(BaseModel):
     """Amenity class"""
     def __init__(self):
         """Initialization"""
