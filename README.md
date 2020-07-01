@@ -15,7 +15,9 @@ Once launched it will display the prompt (hbnb).  From here **AirBnB Clone Inter
 
 ### create
 Creates a new instance of a model, saves it, and prints the id
+
 Usage:
+
 `(hbnb) create <model name>`
 
 e.g.:
@@ -24,7 +26,9 @@ e.g.:
 
 ### show
 Searches the file for an instance that mataches the Model and id and displays its string represenation.
+
 Usage:
+
 `(hbnb) show <model name> <id>`
 
 e.g.:
@@ -33,27 +37,33 @@ e.g.:
 
 ### destroy
 Searches the file for an instance that mataches the Model and id and deletes it.
+
 Usage:
+
 `(hbnb) destroy <model name> <id>`
 
 e.g.:
 
-`(hbnb) destroy BaseModel 1143234253465
+`(hbnb) destroy BaseModel 1143234253465`
 
 ### all
 Prints all instances in storage file
+
 Usage:
 
 `(hbnb) all`
 
 ### update
 Searches the storage file and updates a value at a particular instance
+
+Usage:
+
 `update <class name> <id> <attribute name> "<attribute value>
 "`
 
 e.g.:
 
-`update BaseModel 1143234253465 email "aibnb@holbertonschool.com"`
+`(hbnb) update BaseModel 1143234253465 email "aibnb@holbertonschool.com"`
 
 To exit:
 `(hbnb) quit`
