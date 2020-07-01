@@ -112,9 +112,11 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             if args[3][0] == '"' and args[3][-1] == '"':
-                v = args[3][1:-1]
+                v = str(args[3][1:-1])
+            elif "." in list(args[3]):
+                v = float(args[3])
             else:
-                v = args[3]
+                v = int(args[3])
             att = args[2]
             keyval = "{}.{}".format(args[0], args[1])
             all_obj[keyval].__dict__[att] = v
