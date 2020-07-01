@@ -58,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         elif len(args) == 1:
-            print("** instance id is missing **")
+            print("** instance id missing **")
         elif "{}.{}".format(args[0], args[1]) not in all_obj.keys():
             print("** no instance found **")
         else:
@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         elif len(args) == 1:
-            print("** instance id is missing **")
+            print("** instance id missing **")
         elif "{}.{}".format(args[0], args[1]) not in all_obj.keys():
             print("** no instance found **")
         else:
@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         elif len(args) == 1:
-            print("** instance id is missing **")
+            print("** instance id missing **")
         elif "{}.{}".format(args[0], args[1]) not in all_obj.keys():
             print("** no instance found **")
         elif len(args) == 2:
