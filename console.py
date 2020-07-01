@@ -111,8 +111,11 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 3:
             print("** value missing **")
         else:
+            attr = args[2]
+            if args[3][0] == '"' and args[3][-1] == '"':
+                value = args[3][1:-1]
             keyval = "{}.{}".format(args[0], args[1])
-            all_obj[keyval].attr = args[3]
+            all_obj[keyval].attr = value
             storage.save()
 
 
