@@ -6,10 +6,11 @@ from models.base_model import BaseModel
 class User(BaseModel):
     """User class"""
 
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
+
     def __init__(self):
         """Init func"""
-        self.email = ""
-        self.password = ""
-        self.first_name = ""
-        self.last_name = ""
         super().__init__()
