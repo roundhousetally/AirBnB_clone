@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 
 class State(BaseModel):
     """User class"""
-    state = ""
+    name = ""
     def __init__(self):
         """Initialization"""
         super().__init__()
