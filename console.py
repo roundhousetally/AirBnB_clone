@@ -91,9 +91,13 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             ret = []
+            ret2 = []
             for i in all_obj.keys():
                 ret.append(all_obj[i].__str__())
-            print(ret)
+            for i in ret:
+                if i.split()[0][1:-1] == args[0]:
+                    ret2.append(i)
+            print(ret2)
 
     def do_update(self, arg):
         args = arg.split()
