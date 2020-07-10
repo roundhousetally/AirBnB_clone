@@ -15,7 +15,7 @@ from models import storage
 
 class TestCity(unittest.TestCase):
     """ test cases for user class """
-    def test_pep8_user_model(self):
+    def test_pep8_city_model(self):
         """ tests pep8 """
         pep8style = pep8.StyleGuide(quiet=True)
         errs = pep8style.check_files(['models/city.py'])
