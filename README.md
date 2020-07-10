@@ -47,7 +47,7 @@ e.g.:
 `(hbnb) destroy BaseModel 1143234253465`
 
 ### all
-Prints all instances in storage file
+Prints all instances in storage file.
 
 Usage:
 
