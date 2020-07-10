@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" unit tests for review class """
+""" unit tests for filestorage class """
 
 
 import unittest
@@ -9,7 +9,7 @@ import json
 import os
 import pep8
 import models
-from models.review import Review
+from models.engine.file_storage import FileStorage
 from models import storage
 
 
