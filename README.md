@@ -14,7 +14,7 @@ A python command interpreter written as part of the year one curriculum at Holbe
 Once launched it will display the prompt (hbnb).  From here **AirBnB Clone Interpreter** can be used like the command line within a narrow scope. **AirBnB Clone Interpreter** accepts the following commands:
 
 ### create
-Creates a new instance of a model, saves it, and prints the id
+Creates a new instance of a model, saves it, and prints the id.
 
 Usage:
 
