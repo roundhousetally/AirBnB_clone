@@ -54,7 +54,7 @@ Usage:
 `(hbnb) all`
 
 ### update
-Searches the storage file and updates a value at a particular instance
+Searches the storage file and updates a value at a particular instance.
 
 Usage:
 
